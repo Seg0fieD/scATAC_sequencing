@@ -52,7 +52,7 @@ This project focused on analyzing single-cell chromatin accessibility data from 
 The R script used for analysis is named **scATAC_seq_script**.
 
 ## Results:
-The resulting plots and images can be found in the `results/img` directory of this repository.
+The resulting plots and images can be found in the `plots` directory , and the Quality Control plot generated while creating the Arrow file can be found the `QualityControl` directory of this repository.
 
 ## ArchR Documentation:
 For further information on the ArchR package, please refer to the official [ArchR documentation](https://www.archrproject.com/index.html).
