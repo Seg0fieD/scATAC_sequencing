@@ -1,40 +1,39 @@
-#setwd("/Atac_project")
-#--------------------------------------------------------------------------------------------------
-
+#-------------------------------------------------------------------------------------------------
 # Memory size allocation-------------------------------------------------------
 paste0("Memory size = ", round(object.size(atacProj)/ 10^6, 3), "MB")
 
 #--------------------------------------------------------------------------------------------------
 # Library----------------------------------------------------------------------------------
-library(ArchR)
-library(dplyr)
-library(ggplot2)
-library(DoubletFinder)
-library(patchwork)
-library(SingleR)
-library(enrichR)
-library(SingleCellExperiment)
-library(Seurat)
-library(SeuratWrappers)
-library(tidyverse)
-library(celldex)
-library(monocle3)
-library(BiocManager)
-library(BSgenome)
-library(BSgenome.Hsapiens.UCSC.hg19)
-library(writexl)
-library(WriteXLS)
-set.seed(77)
+suppressPackageStartupMessages({	
+	library(ArchR)
+	library(dplyr)
+	library(ggplot2)
+	library(patchwork)
+	library(SingleCellExperiment)
+	library(Seurat)
+	library(SeuratWrappers)
+	library(tidyverse)
+	library(BiocManager)
+	library(BSgenome)
+	library(BSgenome.Hsapiens.UCSC.hg19)
+	library(writexl)
+	library(WriteXLS)
+   })
 #--------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------
-# ArchR reference set-up----------------------------------------------------------------------
+# set working directory  ----------------------------------------------------------------------
+setwd("/Atac_project/")
+
+# ArchR reference set-up ----------------------------------------------------------------------
 addArchRThreads(threads = 4)
 addArchRGenome("hg19")
+
 #--------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------
 # List and Naming file----------------------------------------------------------------------------
 atac1 <- list.files("/scATAC/datas",pattern = "*.tsv.gz", full.names = TRUE)
 names(atac1) <- c("scATAC_BMMC_D5T1","scATAC_CD34_D7T1","scATAC_CD34_D8T1")
+
 #--------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------
 # Arrow file creation---------------------------------------------------------------------------------
